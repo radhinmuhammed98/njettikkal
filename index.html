@@ -5,8 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Njettikkal Biriyani</title>
 
-<!-- Monetag Verification Script -->
-<script src="https://al5sm.com/tag.min.js" data-zone="10354599"></script>
+<!-- Monetag Ad Script (exactly as provided) -->
+<script>
+(function(s){
+  s.dataset.zone='10354599',
+  s.src='https://al5sm.com/tag.min.js'
+})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
+</script>
 
 <style>
 *{
@@ -42,7 +47,7 @@ body{
 /* ---------- UI ---------- */
 #ui{
   text-align:center;
-  transition:opacity 0.15s linear;
+  transition:opacity 0.1s linear;
 }
 
 #ui.hidden{
@@ -125,17 +130,14 @@ const ui = document.getElementById("ui");
 const sound = document.getElementById("ghostSound");
 
 btn.addEventListener("click", ()=>{
-  // Hide UI immediately
   ui.classList.add("hidden");
 
-  // Monetag ad is already loaded on page load
-  // 5-second delay for user to see ad
+  // tiny unpredictable delay = fear
   setTimeout(()=>{
-    // Trigger jumpscare
     document.body.classList.add("attack");
     sound.currentTime = 0;
     sound.play().catch(()=>{});
-  }, 5000);
+  }, Math.random()*80 + 40);
 });
 </script>
 
