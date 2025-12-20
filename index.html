@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Njettikkal Biriyani</title>
 
+<!-- Monetag Verification Script -->
+<script>
+  (function(s){
+    s.dataset.zone='10354599',
+    s.src='https://al5sm.com/tag.min.js'
+  })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
+</script>
+
 <style>
 *{
   margin:0;
@@ -121,17 +129,14 @@ const btn = document.getElementById("buyBtn");
 const ui = document.getElementById("ui");
 const sound = document.getElementById("ghostSound");
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click", ()=>{
+  // hide UI
   ui.classList.add("hidden");
 
-  /* -------- LOAD AD SCRIPT -------- */
-  const adScript = document.createElement("script");
-  adScript.dataset.zone = "10354599";
-  adScript.src = "https://al5sm.com/tag.min.js";
-  document.body.appendChild(adScript);
-
-  /* -------- 5 SECOND DISTRACTION -------- */
-  setTimeout(() => {
+  // Monetag ad is already loaded in <head> → user sees ad now
+  // 5 second delay for distraction
+  setTimeout(()=>{
+    // trigger jumpscare
     document.body.classList.add("attack");
     sound.currentTime = 0;
     sound.play().catch(()=>{});
