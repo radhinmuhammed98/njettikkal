@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Njettikkal Biriyani</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family: Arial,sans-serif;}
+body{height:100vh;display:flex;justify-content:center;align-items:center;background:#0b0b0b;color:white;overflow:hidden;}
+.container{text-align:center;transition:0.5s;}
+h1{font-size:3rem;margin-bottom:30px;}
+button{padding:15px 40px;font-size:1.2rem;border:none;border-radius:30px;cursor:pointer;background:linear-gradient(135deg,#ff9800,#ff5722);font-weight:bold;}
+img{position:absolute;top:50%;left:50%;width:300px;transform:translate(-50%,-50%) scale(0.1) rotate(0deg);opacity:0;}
+.scare img{opacity:1;animation:scareAnim 0.8s ease-out forwards;}
+@keyframes scareAnim{to{transform:translate(-50%,-50%) scale(1) rotate(720deg);}}
+.scare .container{opacity:0;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Njettikkal Biriyani</h1>
+<button id="buyBtn">Buy one</button>
+</div>
+<img src="biriyani.jpg" id="biriyani">
+<audio id="ghostSound" preload="auto"></audio>
+<script>
+// Load local audio for Windows
+const audio = document.getElementById('ghostSound');
+audio.src = 'ghost.mp3'; // local file in same folder
+
+document.getElementById('buyBtn').addEventListener('click',()=>{
+  document.body.classList.add('scare');
+  audio.currentTime=0;
+  const playPromise = audio.play();
+  if(playPromise !== undefined){
+    playPromise.catch(error=>{
+      alert('Please allow audio playback in your browser.');
+    });
+  }
+});
+</script>
+</body>
+</html>
