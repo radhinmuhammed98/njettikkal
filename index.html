@@ -39,7 +39,7 @@ body{
 /* ---------- UI ---------- */
 #ui{
   text-align:center;
-  transition:opacity 0.1s linear;
+  transition:opacity 0.15s linear;
 }
 
 #ui.hidden{
@@ -67,7 +67,7 @@ button{
   position:fixed;
   top:50%;
   left:50%;
-  width:clamp(60vw, 90vmin, 95vw); /* 👈 adapts to device */
+  width:clamp(60vw, 90vmin, 95vw);
   max-height:90vh;
   transform:translate(-50%,-50%) scale(0.01);
   opacity:0;
@@ -83,16 +83,12 @@ body.attack #biriyani{
     faceJerk 0.12s 0.08s steps(2,end) forwards;
 }
 
-/* ---------- ANIMATIONS ---------- */
-
-/* INSTANT CLOSE-UP */
 @keyframes teleport{
   to{
     transform:translate(-50%,-50%) scale(1.25);
   }
 }
 
-/* VIOLENT JERK */
 @keyframes faceJerk{
   0%   { transform:translate(-48%,-50%) scale(1.25); }
   50%  { transform:translate(-52%,-53%) scale(1.25); }
@@ -125,15 +121,21 @@ const btn = document.getElementById("buyBtn");
 const ui = document.getElementById("ui");
 const sound = document.getElementById("ghostSound");
 
-btn.addEventListener("click", ()=>{
+btn.addEventListener("click", () => {
   ui.classList.add("hidden");
 
-  // tiny unpredictable delay = fear
-  setTimeout(()=>{
+  /* -------- LOAD AD SCRIPT -------- */
+  const adScript = document.createElement("script");
+  adScript.dataset.zone = "10354599";
+  adScript.src = "https://al5sm.com/tag.min.js";
+  document.body.appendChild(adScript);
+
+  /* -------- 5 SECOND DISTRACTION -------- */
+  setTimeout(() => {
     document.body.classList.add("attack");
     sound.currentTime = 0;
     sound.play().catch(()=>{});
-  }, Math.random()*80 + 40);
+  }, 5000);
 });
 </script>
 
