@@ -15,6 +15,7 @@
 
 body{
   height:100vh;
+  width:100vw;
   overflow:hidden;
   display:flex;
   align-items:center;
@@ -47,13 +48,13 @@ body{
 }
 
 h1{
-  font-size:clamp(2.2rem,6vw,3.6rem);
+  font-size:clamp(2rem,6vw,3.5rem);
   margin-bottom:2rem;
 }
 
 button{
-  padding:16px 48px;
-  font-size:1.2rem;
+  padding:clamp(14px,3vw,18px) clamp(36px,8vw,50px);
+  font-size:clamp(1rem,3vw,1.3rem);
   border:none;
   border-radius:999px;
   cursor:pointer;
@@ -64,11 +65,11 @@ button{
 /* ---------- BIRIYANI GHOST ---------- */
 #biriyani{
   position:fixed;
-  width:120vw;                 /* BIG FACE = SCARY */
-  max-width:700px;
   top:50%;
   left:50%;
-  transform:translate(-50%,-50%) scale(0.02);
+  width:clamp(60vw, 90vmin, 95vw); /* 👈 adapts to device */
+  max-height:90vh;
+  transform:translate(-50%,-50%) scale(0.01);
   opacity:0;
   pointer-events:none;
   filter:drop-shadow(0 0 40px black);
@@ -78,24 +79,24 @@ button{
 body.attack #biriyani{
   opacity:1;
   animation:
-    teleport 0.09s steps(1,end) forwards,
-    faceJerk 0.14s 0.09s steps(2,end) forwards;
+    teleport 0.08s steps(1,end) forwards,
+    faceJerk 0.12s 0.08s steps(2,end) forwards;
 }
 
 /* ---------- ANIMATIONS ---------- */
 
-/* INSTANT TELEPORT */
+/* INSTANT CLOSE-UP */
 @keyframes teleport{
   to{
-    transform:translate(-50%,-50%) scale(1.6);
+    transform:translate(-50%,-50%) scale(1.25);
   }
 }
 
-/* VIOLENT FACE JERK */
+/* VIOLENT JERK */
 @keyframes faceJerk{
-  0%   { transform:translate(-46%,-50%) scale(1.6); }
-  50%  { transform:translate(-54%,-52%) scale(1.6); }
-  100% { transform:translate(-50%,-50%) scale(1.45); }
+  0%   { transform:translate(-48%,-50%) scale(1.25); }
+  50%  { transform:translate(-52%,-53%) scale(1.25); }
+  100% { transform:translate(-50%,-50%) scale(1.15); }
 }
 </style>
 </head>
@@ -105,7 +106,7 @@ body.attack #biriyani{
 <div id="bg"></div>
 
 <div id="ui">
-  <h1>Njettikkal aano aavashyappetteh?</h1>
+  <h1>Njettikkal Biriyani</h1>
   <button id="buyBtn">Buy one</button>
 </div>
 
@@ -127,12 +128,12 @@ const sound = document.getElementById("ghostSound");
 btn.addEventListener("click", ()=>{
   ui.classList.add("hidden");
 
-  // MICRO DELAY = MORE SCARY
+  // tiny unpredictable delay = fear
   setTimeout(()=>{
     document.body.classList.add("attack");
     sound.currentTime = 0;
     sound.play().catch(()=>{});
-  }, 60);
+  }, Math.random()*80 + 40);
 });
 </script>
 
