@@ -4,36 +4,149 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Njettikkal Biriyani</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family: Arial,sans-serif;}
-body{height:100vh;display:flex;justify-content:center;align-items:center;background:#0b0b0b;color:white;overflow:hidden;}
-.container{text-align:center;transition:0.5s;}
-h1{font-size:3rem;margin-bottom:30px;}
-button{padding:15px 40px;font-size:1.2rem;border:none;border-radius:30px;cursor:pointer;background:linear-gradient(135deg,#ff9800,#ff5722);font-weight:bold;}
-img{position:absolute;top:50%;left:50%;width:300px;transform:translate(-50%,-50%) scale(0.1) rotate(0deg);opacity:0;}
-.scare img{opacity:1;animation:scareAnim 0.8s ease-out forwards;}
-@keyframes scareAnim{to{transform:translate(-50%,-50%) scale(1) rotate(720deg);}}
-.scare .container{opacity:0;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+body{
+  height:100vh;
+  background:#000;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* MAIN SCREEN */
+.container{
+  text-align:center;
+  z-index:2;
+  transition:0.2s;
+}
+
+h1{
+  font-size:clamp(2rem,6vw,3.5rem);
+  margin-bottom:20px;
+}
+
+.subtitle{
+  opacity:0.7;
+  margin-bottom:30px;
+}
+
+button{
+  padding:15px 45px;
+  font-size:1.2rem;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff9800,#ff0000);
+  color:black;
+  font-weight:800;
+}
+
+/* BIRIYANI IMAGE */
+#biriyani{
+  position:fixed;
+  width:min(80vw,360px);
+  left:-120%;
+  top:50%;
+  transform:translateY(-50%) scale(0.05);
+  opacity:0;
+  z-index:1;
+
+  /* hide bad PNG edges */
+  filter:
+    drop-shadow(0 0 60px rgba(255,60,0,0.9))
+    contrast(1.2)
+    saturate(1.3);
+}
+
+/* SCARE MODE */
+body.scare .container{
+  opacity:0;
+}
+
+body.scare #biriyani{
+  opacity:1;
+  animation:jumpscare 0.35s steps(1) forwards;
+}
+
+/* JUMPSCARE ANIMATION */
+@keyframes jumpscare{
+  0%{
+    left:-120%;
+    transform:translateY(-50%) scale(0.05);
+  }
+  60%{
+    left:55%;
+    transform:translateY(-50%) scale(1.4);
+  }
+  75%{
+    left:48%;
+    transform:translateY(-50%) scale(1.2);
+  }
+  100%{
+    left:50%;
+    transform:translateY(-50%) scale(1);
+  }
+}
+
+/* SCREEN SHAKE */
+body.scare{
+  animation:shake 0.3s infinite;
+}
+
+@keyframes shake{
+  0%{transform:translate(0,0);}
+  25%{transform:translate(-6px,4px);}
+  50%{transform:translate(6px,-4px);}
+  75%{transform:translate(-4px,6px);}
+  100%{transform:translate(0,0);}
+}
 </style>
 </head>
+
 <body>
+
 <div class="container">
-<h1>Njettikkal Biriyani</h1>
-<button id="buyBtn">Buy one</button>
+  <h1>Njettikkal Biriyani</h1>
+  <div class="subtitle">
+    ഞെട്ടിക്കാൻ തയ്യാറാണോ? <br>
+    Ready to get scared?
+  </div>
+  <button id="buyBtn">Buy One 🍗</button>
 </div>
-<img src="https://raw.githubusercontent.com/radhinmuhammed98/njettikkal/refs/heads/main/14b87888-3c82-4fd0-becb-2447aea91db9.png" id="biriyani">
-<audio id="ghostSound" preload="auto">
+
+<img
+  id="biriyani"
+  src="https://raw.githubusercontent.com/radhinmuhammed98/njettikkal/main/14b87888-3c82-4fd0-becb-2447aea91db9.png"
+  alt="Biriyani"
+/>
+
+<audio id="sound" preload="auto">
   <source src="https://raw.githubusercontent.com/radhinmuhammed98/njettikkal/main/ghost.mp3" type="audio/mpeg">
 </audio>
+
 <script>
-document.getElementById('buyBtn').addEventListener('click',()=>{
-  document.body.classList.add('scare');
-  const audio = document.getElementById('ghostSound');
-  audio.currentTime=0;
-  const playPromise = audio.play();
-  if(playPromise!==undefined){
-    playPromise.catch(()=>alert('Please allow audio playback.'));
-  }
+document.getElementById("buyBtn").addEventListener("click",()=>{
+  document.body.classList.add("scare");
+
+  const s = document.getElementById("sound");
+  s.currentTime = 0;
+  s.volume = 1;
+  s.play().catch(()=>{});
+});
+</script>
+
+</body>
+</html>
 });
 </script>
 </body>
