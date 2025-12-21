@@ -4,24 +4,24 @@ const img = document.getElementById("biriyani");
 const sound = document.getElementById("ghostSound");
 
 btn.onclick = () => {
-  // kill UI instantly
+  // remove UI completely (no layout bugs)
   ui.remove();
   document.body.style.pointerEvents = "none";
 
-  // prepare image far away
+  // ensure image natural size is used
   img.style.opacity = "1";
-  img.style.transform = "translate(-250%, -50%) scale(0.15)";
+  img.style.transform = "translate(-300%, -50%) scale(0.2)";
 
-  // force repaint (VERY IMPORTANT)
-  img.offsetHeight;
+  // force browser reflow
+  img.getBoundingClientRect();
 
-  // INSTANT TELEPORT
-  img.style.transform = "translate(-50%, -50%) scale(1.2)";
+  // INSTANT JUMPSCARE
+  img.style.transform = "translate(-50%, -50%) scale(1.05)";
   sound.currentTime = 0;
   sound.play().catch(()=>{});
 
-  // violent jerks
-  setTimeout(()=>img.style.transform="translate(-48%,-52%) scale(1.25)", 30);
-  setTimeout(()=>img.style.transform="translate(-52%,-48%) scale(1.3)", 60);
-  setTimeout(()=>img.style.transform="translate(-50%,-50%) scale(1.15)", 90);
+  // violent but controlled jerk (no overshoot)
+  setTimeout(()=>img.style.transform="translate(-49%,-51%) scale(1.08)", 25);
+  setTimeout(()=>img.style.transform="translate(-51%,-49%) scale(1.1)", 55);
+  setTimeout(()=>img.style.transform="translate(-50%,-50%) scale(1.0)", 85);
 };
