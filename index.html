@@ -76,14 +76,18 @@ button{
   position:fixed;
   top:50%;
   left:50%;
-  width:130vmax;           /* ALWAYS bigger than screen */
-  max-width:none;
-  transform:translate(-300%, -50%) scale(0.2);
+
+  width: min(110vw, 110vh);   /* 👈 PERFECT scaling */
+  height: auto;
+  max-height:110vh;
+
+  transform:translate(-300%, -50%) scale(0.15);
   opacity:0;
   pointer-events:none;
   z-index:999;
   will-change:transform;
 }
+
 </style>
 </head>
 
