@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Njettikkal Biriyani</title>
 
-<!-- Monetag Ad Script (EXACT, untouched) -->
+<!-- Monetag Ad Script (EXACT – do not touch) -->
 <script>
 (function(s){
   s.dataset.zone='10354599',
@@ -13,82 +13,7 @@
 })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
 </script>
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:system-ui, Arial, sans-serif;
-}
-
-body{
-  height:100vh;
-  width:100vw;
-  overflow:hidden;
-  background:#000;
-  color:#fff;
-}
-
-/* ---------- BACKGROUND ---------- */
-#bg{
-  position:fixed;
-  inset:0;
-  background:
-    linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.95)),
-    url("Gemini_Generated_Image_msidqpmsidqpmsid.png");
-  background-size:cover;
-  background-position:center;
-  z-index:-1;
-}
-
-/* ---------- UI ---------- */
-#ui{
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:2rem;
-  z-index:10;
-}
-
-#ui.hidden{
-  display:none;
-}
-
-h1{
-  font-size:clamp(2rem,6vw,3.5rem);
-}
-
-button{
-  padding:18px 50px;
-  font-size:1.3rem;
-  border:none;
-  border-radius:999px;
-  cursor:pointer;
-  background:linear-gradient(135deg,#ff9800,#ff3d00);
-  font-weight:800;
-}
-
-/* ---------- JUMPSCARE IMAGE ---------- */
-#biriyani{
-  position:fixed;
-  top:50%;
-  left:50%;
-
-  width: min(110vw, 110vh);   /* 👈 PERFECT scaling */
-  height: auto;
-  max-height:110vh;
-
-  transform:translate(-300%, -50%) scale(0.15);
-  opacity:0;
-  pointer-events:none;
-  z-index:999;
-  will-change:transform;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -96,49 +21,14 @@ button{
 <div id="bg"></div>
 
 <div id="ui">
-  <h1>Njettikkal Biriyani</h1>
-  <button id="buyBtn">Buy one</button>
+  <h1>Njettikkal Aano aavashyappetteh?</h1>
+  <button id="buyBtn">Buy Now</button>
 </div>
 
-<img
-  id="biriyani"
-  src="https://raw.githubusercontent.com/radhinmuhammed98/njettikkal/main/14b87888-3c82-4fd0-becb-2447aea91db9.png"
-  alt="Biriyani Ghost"
-/>
+<img id="biriyani" src="biriyani.png" alt="Biriyani Ghost">
 
-<audio id="ghostSound" preload="auto">
-  <source src="https://raw.githubusercontent.com/radhinmuhammed98/njettikkal/main/ghost.mp3" type="audio/mpeg">
-</audio>
+<audio id="ghostSound" src="ghost.mp3" preload="auto"></audio>
 
-<script>
-const btn = document.getElementById("buyBtn");
-const ui = document.getElementById("ui");
-const img = document.getElementById("biriyani");
-const sound = document.getElementById("ghostSound");
-
-btn.onclick = () => {
-  // disable everything instantly
-  ui.classList.add("hidden");
-  document.body.style.pointerEvents = "none";
-
-  // prepare OFFSCREEN
-  img.style.opacity = "1";
-  img.style.transform = "translate(-300%, -50%) scale(0.2)";
-
-  // force browser repaint (CRITICAL)
-  img.offsetHeight;
-
-  // TELEPORT TO FACE (1 frame)
-  img.style.transform = "translate(-50%, -50%) scale(1.45)";
-  sound.currentTime = 0;
-  sound.play().catch(()=>{});
-
-  // VIOLENT MICRO JERKS (peerprank-style)
-  setTimeout(()=>img.style.transform="translate(-48%,-52%) scale(1.5)", 25);
-  setTimeout(()=>img.style.transform="translate(-53%,-47%) scale(1.55)", 50);
-  setTimeout(()=>img.style.transform="translate(-50%,-50%) scale(1.4)", 80);
-};
-</script>
-
+<script src="scare.js"></script>
 </body>
 </html>
