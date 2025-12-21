@@ -1,0 +1,69 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui, Arial, sans-serif;
+}
+
+body{
+  height:100vh;
+  width:100vw;
+  overflow:hidden;
+  background:#000;
+  color:#fff;
+}
+
+/* BACKGROUND */
+#bg{
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.95)),
+    url("Gemini_Generated_Image_msidqpmsidqpmsid.png");
+  background-size:cover;
+  background-position:center;
+  z-index:-1;
+}
+
+/* UI */
+#ui{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2rem;
+  z-index:10;
+}
+
+h1{
+  font-size:clamp(2rem,6vw,3.5rem);
+}
+
+button{
+  padding:18px 50px;
+  font-size:1.3rem;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff9800,#ff3d00);
+  font-weight:800;
+}
+
+/* JUMPSCARE IMAGE (FIXED SIZE ISSUE) */
+#biriyani{
+  position:fixed;
+  top:50%;
+  left:50%;
+
+  width:min(110vw, 110vh);
+  height:auto;
+  max-height:110vh;
+
+  transform:translate(-250%, -50%) scale(0.15);
+  opacity:0;
+  pointer-events:none;
+  z-index:999;
+  will-change:transform;
+}
