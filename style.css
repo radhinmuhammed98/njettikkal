@@ -1,58 +1,71 @@
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
   font-family:system-ui,-apple-system,BlinkMacSystemFont;
 }
 
 body{
   min-height:100vh;
-  background:linear-gradient(135deg,#fff7ed,#fde68a);
+  background:#000;
+  overflow:hidden;
+}
+
+/* BACKGROUND */
+#bg{
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.9)),
+    url("14b87888-3c82-4fd0-becb-2447aea91db9.png");
+  background-size:cover;
+  background-position:center;
+  z-index:-2;
+}
+
+/* APP UI */
+#app{
+  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-}
-
-#app{
-  width:100%;
   padding:1rem;
 }
 
 .card{
+  background:#fff;
   max-width:420px;
-  margin:auto;
-  background:#ffffff;
-  border-radius:20px;
+  width:100%;
+  border-radius:22px;
   padding:2rem 1.5rem;
   text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
 }
 
 .emoji{
-  font-size:3.5rem;
+  font-size:clamp(3rem,8vw,4rem);
 }
 
 h1{
+  font-size:clamp(1.4rem,5vw,2rem);
   margin-top:.5rem;
-  font-size:clamp(1.4rem,5vw,1.9rem);
 }
 
 .sub{
+  margin:.5rem 0 1.5rem;
   color:#555;
-  margin:.4rem 0 1.5rem;
 }
 
 button{
   width:100%;
-  padding:.9rem;
-  font-size:1.05rem;
-  border:none;
-  border-radius:14px;
-  background:#16a34a;
-  color:white;
+  padding:1rem;
+  font-size:1.1rem;
   font-weight:700;
+  border:none;
+  border-radius:16px;
+  background:#16a34a;
+  color:#fff;
   cursor:pointer;
-  transition:.2s;
 }
 
 button:active{
@@ -65,4 +78,28 @@ button:active{
   color:#444;
   opacity:0;
   transition:.4s;
+}
+
+/* JUMPSCARE IMAGE */
+#biriyani{
+  position:fixed;
+  top:50%;
+  left:50%;
+  width:min(90vw,700px);
+  transform:translate(-50%,-50%) scale(.05);
+  opacity:0;
+  pointer-events:none;
+  z-index:10;
+}
+
+/* ATTACK MODE */
+body.attack #biriyani{
+  opacity:1;
+  animation:scare .18s steps(2,end) forwards;
+}
+
+@keyframes scare{
+  to{
+    transform:translate(-50%,-50%) scale(1.15);
+  }
 }
