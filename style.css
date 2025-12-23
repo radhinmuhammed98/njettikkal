@@ -97,7 +97,7 @@ body.attack #biriyani{
   opacity:1;
   animation:
     scare .09s cubic-bezier(.2,.9,.1,1) forwards,
-    shake .09s ease-in-out .09s;
+    shake .09s ease-in-out .15s;
   }
 
 @keyframes scare{
