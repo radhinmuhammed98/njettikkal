@@ -11,7 +11,8 @@ body{
   overflow:hidden;
 }
 
-/* BACKGROUND *#bg{
+/* BACKGROUND */
+#bg{
   position:fixed;
   inset:0;
   background:
