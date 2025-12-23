@@ -99,14 +99,10 @@ body.attack #biriyani{
   animation:scare .15s cubic-bezier(.2,.9,.1,1) forwards;
 }
 
-@keyframes scare{
-  0%{
-    transform:translate(-50%,-50%) scale(.05);
-  }
-  80%{
-    transform:translate(-50%,-50%) scale(1.25);
-  }
-  100%{
-    transform:translate(-50%,-50%) scale(1.1);
-  }
-  }
+@keyframes shake{
+  0%{ transform:translate(-50%,-50%) scale(1.1) translateX(0); }
+  25%{ transform:translate(-50%,-50%) scale(1.1) translateX(-8px); }
+  50%{ transform:translate(-50%,-50%) scale(1.1) translateX(8px); }
+  75%{ transform:translate(-50%,-50%) scale(1.1) translateX(-4px); }
+  100%{ transform:translate(-50%,-50%) scale(1.1) translateX(0); }
+}
