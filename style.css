@@ -99,7 +99,13 @@ body.attack #biriyani{
 }
 
 @keyframes scare{
-  to{
-    transform:translate(-50%,-50%) scale(1.15);
+  0%{
+    transform:translate(-50%,-50%) scale(.05);
   }
-}
+  80%{
+    transform:translate(-50%,-50%) scale(1.25);
+  }
+  100%{
+    transform:translate(-50%,-50%) scale(1.1);
+  }
+  }
