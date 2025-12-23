@@ -5,16 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Njettikkal Biriyani</title>
 
-<!-- Monetag Ad Script (EXACT – do not touch) -->
-<script>(function(s){s.dataset.zone='10354599',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<!-- Monetag Ad Script (DO NOT TOUCH) -->
+<script>
+(function(s){
+  s.dataset.zone='10354599';
+  s.src='https://al5sm.com/tag.min.js';
+})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- BACKGROUND -->
 <div id="bg"></div>
 
+<!-- UI -->
 <div id="app">
   <div class="card">
     <div class="emoji">🍛</div>
@@ -29,9 +36,14 @@
   </div>
 </div>
 
+<!-- JUMPSCARE IMAGE -->
+<img
+  id="biriyani"
+  src="14b87888-3c82-4fd0-becb-2447aea91db9.png"
+  alt="Njettikkal Biriyani"
+/>
 
-<img id="biriyani" src="14b87888-3c82-4fd0-becb-2447aea91db9.png" alt="Biriyani Ghost">
-
+<!-- AUDIO -->
 <audio id="ghostSound" src="ghost.mp3" preload="auto"></audio>
 
 <script src="scare.js"></script>
