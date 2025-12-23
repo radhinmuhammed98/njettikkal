@@ -95,6 +95,7 @@ button:active{
 /* ATTACK MODE */
 body.attack #biriyani{
   opacity:1;
+  filter: blur(6px);
   animation:scare .15s cubic-bezier(.2,.9,.1,1) forwards;
 }
 
